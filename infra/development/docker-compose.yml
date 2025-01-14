@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:13
+    container_name: database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password@
+      POSTGRES_DB: crypto_pilot_development
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - database-network
+
+networks:
+  database-network:
+    driver: bridge
+
+volumes:
+  db_data:
